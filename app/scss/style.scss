@@ -547,13 +547,17 @@
     &:active {
       cursor: grabbing;
     }
+    &-item{
+      display: flex !important;
+      justify-content: center;
+    }
     &-item img {
-      max-width: 361px;
-      max-height: 249px;
-      width: 28.2vw;
+      // max-width: 361px;
+      // max-height: 249px;
+      width: 100%; // 28.2vw
       object-fit: cover;
 
-      padding: 0 15px;
+      padding: 0 5px;
     }
   }
 

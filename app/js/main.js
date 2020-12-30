@@ -17,6 +17,22 @@ $(function () {
     // autoplay: true,
     speed: 1000,
     autoplaySpeed: 2000,
+     responsive: [
+    {
+      breakpoint: 500,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 410, //375
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+     } 
+    ]
   });
 
   $(".news__slider").slick({
