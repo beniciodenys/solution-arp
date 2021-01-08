@@ -65,9 +65,10 @@ $(function () {
     wrappedClassName = className + "--wrapped"
   ) {
     let offset_top_prev;
+    let offset_top;
 
     $(className).each(function () {
-      let offset_top = $(this).offset().top;
+      offset_top = $(this).offset().top;
 
       if (offset_top > offset_top_prev) {
         $(this).addClass(wrappedClassName);
@@ -80,4 +81,6 @@ $(function () {
 
     offset_top_prev = null;
   }
+
+  
 });

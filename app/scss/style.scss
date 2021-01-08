@@ -193,6 +193,7 @@
     text-decoration: none;
   }
   &__logo {
+    text-align: center;
     @include font-settings($f-w: 800, $f-sz: 20px, $color: #fff);
     & span {
       @include font-settings($f-w: 800, $f-sz: 20px, $color: #fff);
@@ -210,7 +211,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .header__contact {
@@ -1041,7 +1042,7 @@
     // flex-shrink: 0;
     // flex-basis: max-content;
     width: 100%;
-    padding: 24px 0 0 6.25%;
+    padding: 24px 0 30px 6.25%;  //padding: 24px 0 0 6.25%;
     background-color: $secondary-bg-color;
     display: flex;
     flex-wrap: wrap;
@@ -1114,6 +1115,10 @@
       position: relative;
       z-index: 100;
 
+      .footer__mail{
+        margin-top: 11px;
+      }
+
       .footer__telephone-number,
       .footer__mail-address {
         font-family: $main-font-family;
@@ -1129,18 +1134,18 @@
         }
       }
 
-      // &::after {
-      //   content: "";
-      //   position: absolute;
-      //   top: 0;
-      //   right: 0;
-      //   transform: translate(0%, 0%);
-      //   width: 135%;
-      //   height: 100%;
-      //   z-index: -100;
-      //   background-color: rgba($secondary-bg-color, $alpha: 0.5);
-      //   filter: blur(10px);
-      // }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(0%, 0%);
+        width: 135%;
+        height: 100%;
+        z-index: -100;
+        background-color: rgba($secondary-bg-color, $alpha: 0.5);
+        filter: blur(10px);
+      }
 
       &::before {
         content: "";
@@ -1156,7 +1161,8 @@
 
     .footer__main-flex-item {
       &--wrapped {
-        margin-left: 0;
+        margin-left: 0;  
+        //margin-bottom: 29px;
         &::before {
           display: none;
         }
