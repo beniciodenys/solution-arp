@@ -17,22 +17,22 @@ $(function () {
     // autoplay: true,
     speed: 1000,
     autoplaySpeed: 2000,
-     responsive: [
-    {
-      breakpoint: 500,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 410, //375
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-     } 
-    ]
+    responsive: [
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 410, //375
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   });
 
   $(".news__slider").slick({
@@ -82,5 +82,48 @@ $(function () {
     offset_top_prev = null;
   }
 
-  
+  $(".preventDefault").on("click", function (element) {
+    element.preventDefault();
+  });
+
+  $(".tariff__form-input").on("change paste keyup", tariff_counter);
+  $(".tariff__form-checkbox-radio > input").on("click", tariff_counter);
+
+  function tariff_counter() {
+    $(".tariff__val").html('Стоимость: <span id="tariff__val">0.00</span> грн');
+
+    var t_val = document.getElementById("tariff__val");
+    var value = 0;
+
+    // alert(($(".tariff__form-input[name=amount]").val()));
+    value = Number($(".tariff__form-input[name=amount]").val());
+
+    var counter = 0;
+    document
+      .querySelectorAll(".tariff__form-checkbox-radio > input")
+      .forEach((x) => {
+        counter++;
+        // alert(x.name + `: ${counter}`);
+        if (x.checked) {
+          // alert(x.name + `: ${counter}: checked: ${Number(x.value)}`);
+          value *= Number(x.value);
+        }
+      });
+
+    t_val.innerText = value * 600;
+
+    //---------------------
+    // alert($(".tariff__form-input[name=area]").val());
+    if (
+      $(".tariff__form-input[name=area]").val() == "" &&
+      $(".tariff__form-input[name=amount]").val() != ""
+    ) {
+      $(".tariff__val").html("Введите площадь вашего дома");
+    } else if (
+      $(".tariff__form-input[name=amount]").val() == "" &&
+      $(".tariff__form-input[name=area]").val() != ""
+    ) {
+      $(".tariff__val").html("Введите количество квартир");
+    }
+  }
 });
